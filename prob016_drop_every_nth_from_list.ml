@@ -18,3 +18,13 @@ let drop l n =
     in List.rev (helper l n);;
 
 drop ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 3;;
+
+(*
+The page http://ocaml.org/learn/tutorials/99problems.html
+offers an elegant but non-tail-recursive solution
+*)
+let drop_not_tail_recursive list n =
+    let rec aux i = function
+        | [] -> []
+        | h :: t -> if i = n then aux 1 t else h :: aux (i+1) t  in
+    aux 1 list;;
