@@ -11,3 +11,13 @@ let duplicate l =
 duplicate ["a";"b";"c";"c";"d"];;
 
 duplicate [1;2;3];;
+
+(*
+The page http://ocaml.org/learn/tutorials/99problems.html
+offers a non-tail-recursive solution,
+which is elegant and pleases the eye:
+
+let rec duplicate = function
+    | [] -> []
+    | h :: t -> h :: h :: duplicate t;;
+*)
