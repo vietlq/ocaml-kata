@@ -19,7 +19,7 @@ let decode l =
         | Many (n, x) -> make_list n x a
     in List.rev (List.fold_left folder [] l);;
 
-(decode [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]) = ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"]
+(decode [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]) = ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"];;
 
 (*
 This can be done without List.fold_left as well
@@ -32,6 +32,6 @@ let decode2 l =
         | [] -> acc
         | One x::t -> aux (x::acc) t
         | Many (n, x)::t -> aux (make_list n x acc) t
-    in List.rev (aux [] l)
+    in List.rev (aux [] l);;
 
-(decode2 [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]) = ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"]
+(decode2 [Many (4, "a"); One "b"; Many (2, "c"); Many (2, "a"); One "d"; Many (4, "e")]) = ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"];;
