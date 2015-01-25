@@ -1,11 +1,5 @@
 (*
-Problem 13: Run-length encoding of a list (direct solution). (medium)
-
-Implement the so-called run-length encoding data compression method directly.
-I.e. don't explicitly create the sublists containing the duplicates,
-as in problem "Pack consecutive duplicates of list elements into sublists",
-but only count them. As in problem "Modified run-length encoding",
-simplify the result list by replacing the singleton lists (1 X) by X.
+Problem 11: Write modified run-length encoding.
 
 type 'a rle =
     | One of 'a
@@ -16,8 +10,6 @@ type 'a rle =
     | One of 'a
     | Many of int * 'a;;
 
-(* Since the solution to Problem 11 does not use any indirect holder like pack,
-it's used again to solve the Problem 13. *)
 let encode l =
     (* Utility function to merge the accumulator
         when the count of a value is known *)
