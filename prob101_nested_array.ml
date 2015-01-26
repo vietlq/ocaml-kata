@@ -24,10 +24,42 @@ let nested2 l =
 (* This one uses List.fold_left & no direct recursion *)
 let nested3 l =
     let prepender a b = (b::List.hd a)::a
-    in List.fold_left prepender [[]] (List.rev l)
+    in List.fold_left prepender [[]] (List.rev l);;
+
+(* For the sake of completeness, here's the version using List.fold_right*)
+let nested4 l =
+    let prepender a b = (a::List.hd b)::b
+    in List.fold_right prepender l [[]];;
+
+(* The versions nested2 & nested3 are the most efficient *)
+(* The version 1 nested is the most elegant *)
 
 let sample0 = []
-let sample1 = [1]
-let sample2 = [1; 2]
-let sample3 = [1; 2; 3]
-let sample4 = [1; 2; 3; 4]
+and sample1 = [1]
+and sample2 = [1; 2]
+and sample3 = [1; 2; 3]
+and sample4 = [1; 2; 3; 4];;
+
+nested sample0;;
+nested sample1;;
+nested sample2;;
+nested sample3;;
+nested sample4;;
+
+nested2 sample0;;
+nested2 sample1;;
+nested2 sample2;;
+nested2 sample3;;
+nested2 sample4;;
+
+nested3 sample0;;
+nested3 sample1;;
+nested3 sample2;;
+nested3 sample3;;
+nested3 sample4;;
+
+nested4 sample0;;
+nested4 sample1;;
+nested4 sample2;;
+nested4 sample3;;
+nested4 sample4;;
