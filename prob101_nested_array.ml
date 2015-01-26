@@ -21,6 +21,11 @@ let nested2 l =
         | _::t as l -> aux (l::acc) t
     in List.rev_append (aux [] l) [[]];;
 
+(* This one uses List.fold_left & no direct recursion *)
+let nested3 l =
+    let prepender a b = (b::List.hd a)::a
+    in List.fold_left prepender [[]] (List.rev l)
+
 let sample0 = []
 let sample1 = [1]
 let sample2 = [1; 2]
