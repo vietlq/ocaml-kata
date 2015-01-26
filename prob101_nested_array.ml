@@ -26,7 +26,7 @@ let nested3 l =
     let prepender a b = (b::List.hd a)::a
     in List.fold_left prepender [[]] (List.rev l);;
 
-(* For the sake of completeness, here's the version using List.fold_right*)
+(* For the sake of completeness, here's the version using List.fold_right *)
 let nested4 l =
     let prepender a b = (a::List.hd b)::b
     in List.fold_right prepender l [[]];;
