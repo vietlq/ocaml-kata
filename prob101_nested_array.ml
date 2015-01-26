@@ -13,3 +13,16 @@ continue the process until the tail is empty
 let rec nested = function
     [] -> [[]]
     | _::t as l -> l::(nested t)
+
+(* This solution is elegant too and tail-recursive *)
+let nested2 l =
+    let rec aux acc = function
+        [] -> acc
+        | _::t as l -> aux (l::acc) t
+    in List.rev_append (aux [] l) [[]]
+
+let sample0 = []
+let sample1 = [1]
+let sample2 = [1; 2]
+let sample3 = [1; 2; 3]
+let sample4 = [1; 2; 3; 4]
