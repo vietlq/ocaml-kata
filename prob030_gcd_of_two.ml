@@ -1,5 +1,5 @@
 (*
-Determine the greatest common divisor of two positive integer numbers.
+Problem 30: Determine the greatest common divisor of two positive integer numbers.
 *)
 
 let gcd a b =
