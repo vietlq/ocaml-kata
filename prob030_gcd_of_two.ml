@@ -8,7 +8,7 @@ let gcd a b =
         in if residue = 0 then y
         else aux y residue
     in match a, b with
-        | 0, 0 ->  failwith "Both arguments cannot be 0"
+        | 0, 0 -> failwith "Both arguments cannot be 0"
         | 0, _ -> b
         | _, 0 -> a
         | a, b -> aux a b;;
