@@ -19,3 +19,10 @@ gcd 1, 0;;
 gcd 11, 17;;
 gcd 19, 27;;
 gcd 20536 7826;;
+
+(*
+The page http://ocaml.org/learn/tutorials/99problems.html
+offers a very elegant solution (and allows both to be 0, which is wrong!)
+*)
+let rec gcd2 a b =
+    if b = 0 then a else gcd2 b (a mod b);;
