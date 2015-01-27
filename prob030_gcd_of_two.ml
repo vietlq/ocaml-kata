@@ -13,11 +13,11 @@ let gcd a b =
         | _, 0 -> a
         | a, b -> aux a b;;
 
-gcd 0, 0;;
-gcd 0, 1;;
-gcd 1, 0;;
-gcd 11, 17;;
-gcd 19, 27;;
+gcd 0 0;;
+gcd 0 1;;
+gcd 1 0;;
+gcd 11 17;;
+gcd 19 27;;
 gcd 20536 7826;;
 
 (*
