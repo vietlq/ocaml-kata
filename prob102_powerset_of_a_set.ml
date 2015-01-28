@@ -24,3 +24,7 @@ let range a b =
 powerset (range 1 3);;
 powerset (range 1 10);;
 powerset (range 1 22);;
+
+(* Elegant but not tail-recursive and gets stack overflow at N=15-17 *)
+let rec powerset2 = function [] -> [[]]
+    | h::t -> let s = powerset2 t in List.map (fun x -> h::x) s @ s
