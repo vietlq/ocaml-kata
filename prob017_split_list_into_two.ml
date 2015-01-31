@@ -7,7 +7,7 @@ then the first part is the list and the second part is empty.
 let split l n =
     let rec aux acc n = function
         [] -> (List.rev acc, [])
-        | h::t -> if n < 1 then (List.rev acc, t)
+        | h::t as l -> if n < 1 then (List.rev acc, l)
             else aux (h::acc) (n-1) t
     in aux [] n l;;
 

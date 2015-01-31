@@ -41,3 +41,15 @@ let slice2 list i k =
       | h :: t as l -> if n = 0 then l else drop (n-1) t
     in
     take (k - i + 1) (drop i list);;
+
+(*
+Another solution derived from function in Problem 17.
+*)
+let slice3 l first last =
+    let split l n =
+        let rec aux acc n = function
+            [] -> (List.rev acc, [])
+            | h::t as l -> if n < 1 then (List.rev acc, l)
+                else aux (h::acc) (n-1) t
+        in aux [] n l
+    in fst (split (snd (split l first)) (last - first + 1))
