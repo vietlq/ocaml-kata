@@ -8,15 +8,17 @@ Given two indices, i and k, the slice is the list containing the elements betwee
 *)
 
 let slice l first last =
+    (* Pre-condition: first <= last *)
     let rec aux first last i acc = function
         [] -> acc
-        | h::t -> if i > last then acc
+        | h::t -> if i > last then acc (* Terminate before reaching the end *)
             else if i >= first then aux first last (i+1) (h::acc) t
             else aux first last (i+1) acc t
     (* Handling of negative indices is not available yet *)
     in if (first < 0) || (last < 0) then []
     (* This is additional feature *)
     else if first <= last then List.rev (aux first last 0 [] l)
+    (* Swap to satisfy pre-condition, but don't reverse the result *)
     else aux last first 0 [] l;;
 
 slice ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 2 2 = ["c"];;
