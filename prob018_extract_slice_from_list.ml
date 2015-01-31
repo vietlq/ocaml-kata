@@ -25,3 +25,19 @@ slice ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 2 2 = ["c"];;
 slice ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 2 6 = ["c"; "d"; "e"; "f"; "g"];;
 slice ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 6 2 = ["g"; "f"; "e"; "d"; "c"];;
 slice ["a";"b";"c";"d";"e";"f";"g";"h";"i";"j"] 2 66 = ["c"; "d"; "e"; "f"; "g"; "h"; "i"; "j"];;
+
+(*
+The page http://ocaml.org/learn/tutorials/99problems.html
+offered solution in terms of picking & dropping elements, which is handy as well.
+There's no error handling. And their solution is non-recursive.
+*)
+let slice2 list i k =
+    let rec take n = function
+      | [] -> []
+      | h :: t -> if n = 0 then [] else h :: take (n-1) t
+    in
+    let rec drop n = function
+      | [] -> []
+      | h :: t as l -> if n = 0 then l else drop (n-1) t
+    in
+    take (k - i + 1) (drop i list);;
