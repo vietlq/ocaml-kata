@@ -21,9 +21,9 @@ let traverse t = let rec aux path acc = function
 
 let rec subtree dl t = match dl, t with
     | [], _ -> Some t
-    | _, Leaf _ -> None
     | L :: tdl, Node (l, _) -> subtree tdl l
-    | R :: tdl, Node (_, r) -> subtree tdl r;;
+    | R :: tdl, Node (_, r) -> subtree tdl r
+    | _, _ -> None;;
 
 let rec print_list = function [] -> ()
     | e::l -> print_int e ; print_string " " ; print_list l;;
