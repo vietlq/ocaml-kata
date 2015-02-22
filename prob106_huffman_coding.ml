@@ -11,6 +11,9 @@ let code_tree = Node (
     ),
     Leaf 'e');;
 
+let rec map f = function | Leaf v -> Leaf (f v)
+    | Node (l, r) -> Node (map f l, map f r)
+
 let traverse t = let rec aux path acc = function
     | Leaf v -> (v, List.rev path) :: acc
     | Node (l, r) -> (aux (0 :: path) acc l) @ (aux (1 :: path) acc r)
