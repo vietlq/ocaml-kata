@@ -25,12 +25,9 @@ let rec subtree dl t = match dl, t with
     | R :: tdl, Node (_, r) -> subtree tdl r
     | _, _ -> None;;
 
-let rec print_list = function [] -> ()
-    | e::l -> print_int e ; print_string " " ; print_list l;;
-
 let rec print_direction = function [] -> ()
-    | L::tl -> print_char 'L' ; print_string " " ; print_direction tl
-    | R::tl -> print_char 'R' ; print_string " " ; print_direction tl;;
+    | L :: tl -> print_char 'L' ; print_string " " ; print_direction tl
+    | R :: tl -> print_char 'R' ; print_string " " ; print_direction tl;;
 
 let decode dl t = let rec aux dl1 t1 acc =
     match dl1, t1 with
