@@ -65,3 +65,16 @@ let huffman_coding l =
 
 huffman_coding ['a', 0.3; 'b', 0.1; 'c', 0.2; 'd', 0.3];;
 huffman_coding [6, 0.2; 8, 0.3; 4, 0.1; 9, 0.4];;
+
+let byte_freq astr =
+    let bmap = Array.make 256 0.
+    in let it_func c = bmap.(Char.code c) <- bmap.(Char.code c) +. 1.
+    in let () = String.iter it_func astr
+    in let fold_func1 (k, total, acc) freq =
+        if freq > 0. then (k + 1, total +. freq, (Char.chr k, freq) :: acc)
+        else (k + 1, total, acc)
+    in let size, total, freqs = Array.fold_left fold_func1 (0, 0., []) bmap
+    in List.rev_map (fun (c, v) -> (c, v /. total)) freqs;;
+
+byte_freq "Hello, World!";;
+huffman_coding (byte_freq "Hello, World!");;
