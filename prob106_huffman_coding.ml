@@ -70,10 +70,10 @@ let byte_freq astr =
     let bmap = Array.make 256 0.
     in let it_func c = bmap.(Char.code c) <- bmap.(Char.code c) +. 1.
     in let () = String.iter it_func astr
-    in let fold_func1 (k, total, acc) freq =
+    in let fold_func (k, total, acc) freq =
         if freq > 0. then (k + 1, total +. freq, (Char.chr k, freq) :: acc)
         else (k + 1, total, acc)
-    in let size, total, freqs = Array.fold_left fold_func1 (0, 0., []) bmap
+    in let size, total, freqs = Array.fold_left fold_func (0, 0., []) bmap
     in List.rev_map (fun (c, v) -> (c, v /. total)) freqs;;
 
 byte_freq "Hello, World!";;
