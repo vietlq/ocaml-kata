@@ -76,5 +76,12 @@ let byte_freq astr =
     in let size, total, freqs = Array.fold_left fold_func (0, 0., []) bmap
     in List.rev_map (fun (c, v) -> (c, v /. total)) freqs;;
 
-byte_freq "Hello, World!";;
-huffman_coding (byte_freq "Hello, World!");;
+let freqs = byte_freq "A programmer started to cuss
+Because getting to sleep was a fuss
+As she lay there in bed
+Looping 'round in her head
+was: while(!asleep()) sheep++
+
+Source: http://stackoverflow.com/a/245307/128028";;
+
+huffman_coding freqs;;
